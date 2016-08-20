@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+ <html ng-app="myApp">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Books R Us</title>
+
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+
+  <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>-->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+  <!--cookies-->
+  <script src="plugins/js-cookie-master/src/js.cookie.js"></script>
+
+
+  <link href="css/books.css" rel="stylesheet" type="text/css">
+  <!--my script file-->
+  <script src="js/app.js"></script>
+
+
+
+
+  </head>
+
+  <body>
+    <div class="container-fluid">
+
+    	<div class="row">
+
+    			<nav class="navbar navbar-default" role="navigation">
+    				<div class="navbar-header">
+
+    					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    						 <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+    					</button> <a class="navbar-brand" href="#">Books R Us</a>
+    				</div>
+
+    				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    					<ul class="nav navbar-nav">
+    						<li class="active">
+    							<a href="page2.html">View Basket</a>
+    						</li>
+
+    				</div>
+
+    			</nav>
+
+    	</div>
+
+      <div class="row">
+        <div class="col-md-12" ng-controller="ShopController as store">
+          <div class="row">
+            <div class="col-md-4" ng-repeat="book in books">
+              <div class="thumbnail">
+    						<img class="img-rounded" ng-src="{{book.images[0]}}" alt="'{{book.title}}'" ng-hide="{{book.images[0]==null}}" />
+
+
+    						<div class="caption">
+    							<h3>
+    								{{book.title}}
+
+    							</h3>
+    							<p>
+    								Author: {{book.author}}
+    							</p>
+    							<p>
+    								Details: {{book.info}}
+    							</p>
+    							<p>Price: £{{book.price}}</p>
+    							<p>
+    								<a class="btn btn-primary" ng-click="buyStuff($index)">Add to Basket</a>
+                    <b id="totalDiv" ng-if="book.total>0">{{book.total}} in basket</b>
+                    <button class="btn btn-danger btn-md" ng-if="book.total>0" ng-click="removeStuff($index)">-</button>
+                    <!--<a class="btn" href="page2.html">More Details</a>-->
+    							</p>
+    						</div><!--end caption-->
+    					</div><!--end thumbnail-->
+            </div><!--end colmd4-->
+          </div><!--end row-->
+        </div><!--end colmd12-->
+      </div><!--end row-->
+
+
+
+
+
+
+</div><!--end container-->
+
+  </body>
+  </html>

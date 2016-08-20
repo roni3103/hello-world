@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+
+  <meta charset="utf-8">
+
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>Books R Us</title>
+
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <!--<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>-->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+  <!--cookies-->
+  <script src="plugins/js-cookie-master/src/js.cookie.js"></script>
+
+<link href="css/books.css" rel="stylesheet">
+  <!--my script file-->
+  <script src="js/app.js"></script>
+
+
+
+
+  </head>
+
+
+
+<!--<body onload="pageTwoLoad()">	-->
+<!--commented out as I want to use angular for the show and hide etc-->
+
+<body ng-controller="BasketController as basket">
+
+<div class="container-fluid">
+
+<!--navbar-->
+<div class="row">
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+           <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+        </button> <a class="navbar-brand" href="index.html">Home</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active">
+            <a>Basket</a>
+          </li>
+      </div>
+    </nav>
+</div><!--end row-->
+
+<!--Empty Basket-->
+<div class="row">
+  <div class="col-md-12">
+    <div id="emptyBasket" ng-if="purchases==0">
+      <div class="jumbotron">
+        <h3>Your basket is empty</h3>
+      </div>
+    </div>
+  </div><!--end colmd12-->
+</div><!--end row-->
+
+<!--Basket with products in-->
+<div class="row">
+  <div class="col-md-12">
+
+<div id="carts" ng-if="purchases>0">
+	<table ng-repeat="book in books" id="cart" class="table table-hover table-condensed"  ng-if="book.total>0" >
+    				<thead>
+						<tr>
+							<th style="width:35%">Product</th>
+							<th style="width:25%">Price</th>
+							<th style="width:8%">Quantity</th>
+							<th style="width:22%" class="text-center">Subtotal</th>
+							<th style="width:10%"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td data-th="Product">
+								<div class="row">
+									<div class="col-sm-3 hidden-xs"><img ng-src="{{book.images[0]}}" alt="..." class="img-responsive"/></div>
+									<div class="col-sm-9">
+										<h4 class="nomargin">{{book.title}}</h4>
+                    {{book.info}}
+									</div>
+								</div>
+							</td>
+							<td data-th="Price">{{book.price}}</td>
+							<td data-th="Quantity">
+								<p class="form-control text-center">{{book.total}}</p>
+							</td>
+							<td data-th="Subtotal" class="text-center">£{{book.subtotal}}</td>
+							<td class="actions" data-th="">
+								<button class="btn btn-danger btn-md" ng-click="removeAll($index)"><i class="fa fa-trash-o"> Remove</i></button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+        <table style="width:100%;">
+            <tr>
+              <td><a href="index.html" class="btn btn-warning">Continue Shopping</a></td>
+              <td colspan="2" class="hidden-xs"></td>
+              <td class="hidden-xs text-center"><strong style="font-size:2em;">Total: £{{overall}}</strong></td>
+              <td><a href="#" class="btn btn-success btn-block">Checkout</a></td>
+            </tr>
+        </table>
+
+
+		</div><!--end cart
+	</div><!--end colmd12-->
+</div><!--end row-->
+
+</div><!--end container-->
+
+</body>
+</html>
