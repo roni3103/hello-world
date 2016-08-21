@@ -4,10 +4,11 @@ var path = require('path');
 
 app.use(express.static(__dirname + '/Bookshop'));
 
-/*app.get('/', function (req, res) {
-   res.sendFile(path.join(__dirname + '/Bookshop/index.html'));
+app.get('/page2', function (req, res) {
+   res.sendFile(path.join(__dirname + '/Bookshop/basket.html'));
 });
-app.get('/:name', function(req,res) {
+
+/*app.get('/:name', function(req,res) {
 res.send('Hello ' + req.params.name);
 });*/
 
