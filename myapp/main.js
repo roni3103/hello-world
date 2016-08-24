@@ -8,6 +8,8 @@ app.get('/page2', function (req, res) {
    res.sendFile(path.join(__dirname + '/Bookshop/basket.html'));
 });
 
+
+//Using a parameter called name - commented out at present
 /*app.get('/:name', function(req,res) {
 res.send('Hello ' + req.params.name);
 });*/
